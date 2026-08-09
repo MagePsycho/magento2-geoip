@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * This file is part of the MagePsycho_GeoIp package.
+ *
+ * @author   Raj KB <magepsycho@gmail.com>
+ * @license  Open Software License (OSL 3.0)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="magepsycho" translate="label" sortOrder="200">
+            <label>MagePsycho</label>
+        </tab>
+        <section id="magepsycho_geoip" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+            <tab>magepsycho</tab>
+            <label>GeoIP</label>
+            <resource>MagePsycho_GeoIp::config</resource>
+
+            <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="forced_ip" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Forced IP for Testing</label>
+                    <comment><![CDATA[When non-empty, every IP lookup is overridden with this address. Lets you end-to-end test the geo flow with a known IP without faking real visitor / order / customer data.
+                    <div class="message message-warning" style="margin-top:8px;">
+                        <strong>Keep this field empty in production.</strong>
+                        A non-empty value forces every IP lookup &mdash; admin order grid, customer registration, cart, and any other consumer of <em>MagePsycho_GeoIp</em> &mdash; to resolve to this address globally. Useful for testing, harmful in production.
+                    </div>]]></comment>
+                </field>
+            </group>
+
+            <group id="maxmind" translate="label comment" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>MaxMind GeoLite2</label>
+                <comment><![CDATA[<div class="message message-info" style="margin-top:8px;">
+                    <p>The IP lookup uses MaxMind's free <strong>GeoLite2-City</strong> + <strong>GeoLite2-ASN</strong> databases.</p>
+                    <p>You have two setup paths:</p>
+                    <ol>
+                        <li><strong>Auto-download</strong> &mdash; fill in your Account ID and License Key below (free at <a href="https://www.maxmind.com/en/geolite2/signup" target="_blank">maxmind.com/en/geolite2/signup</a>), then run <code>bin/magento magepsycho:geoip:update</code> or set a cron expression below.</li>
+                        <li><strong>Manual drop</strong> &mdash; download <code>GeoLite2-City.mmdb</code> and <code>GeoLite2-ASN.mmdb</code> from MaxMind yourself and drop them into <code>var/maxmind/</code>. No credentials needed.</li>
+                    </ol>
+                </div>]]></comment>
+                <field id="account_id" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Account ID</label>
+                </field>
+                <field id="license_key" translate="label" type="obscure" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>License Key</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                </field>
+                <field id="last_import" translate="label" type="label" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Last Database Import</label>
+                    <frontend_model>MagePsycho\GeoIp\Block\Adminhtml\System\Config\LastImport</frontend_model>
+                </field>
+                <field id="update_button" translate="label" sortOrder="35" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Update Now</label>
+                    <frontend_model>MagePsycho\GeoIp\Block\Adminhtml\System\Config\UpdateButton</frontend_model>
+                </field>
+                <field id="cron_expr" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Auto-update Cron Expression</label>
+                    <!--<backend_model>MagePsycho\GeoIp\Model\Config\Backend\DefaultableField</backend_model>-->
+                    <comment><![CDATA[Standard crontab syntax (e.g. <code>0 3 * * 1</code> = every Monday at 03:00). Leave blank to fall back to the default. MaxMind publishes new database builds twice a week; weekly is plenty.]]></comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

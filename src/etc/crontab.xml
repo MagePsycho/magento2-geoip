@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * This file is part of the MagePsycho_GeoIp package.
+ *
+ * @author   Raj KB <magepsycho@gmail.com>
+ * @license  Open Software License (OSL 3.0)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="magepsycho_geoip_update_database"
+             instance="MagePsycho\GeoIp\Cron\UpdateDatabase"
+             method="execute">
+            <config_path>magepsycho_geoip/maxmind/cron_expr</config_path>
+        </job>
+    </group>
+</config>

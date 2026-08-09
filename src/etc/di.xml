@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * This file is part of the MagePsycho_GeoIp package.
+ *
+ * @author   Raj KB <magepsycho@gmail.com>
+ * @license  Open Software License (OSL 3.0)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="MagePsycho\GeoIp\Api\IpLookupInterface"        type="MagePsycho\GeoIp\Model\IpLookup"/>
+    <preference for="MagePsycho\GeoIp\Api\IpLookupResultInterface"  type="MagePsycho\GeoIp\Model\IpLookupResult"/>
+    <preference for="MagePsycho\GeoIp\Api\DatabaseManagerInterface" type="MagePsycho\GeoIp\Model\DatabaseManager"/>
+    <preference for="MagePsycho\GeoIp\Model\ConfigInterface"        type="MagePsycho\GeoIp\Model\Config"/>
+
+    <type name="MagePsycho\GeoIp\Console\Command\UpdateDatabase">
+        <arguments>
+            <argument name="name" xsi:type="string">magepsycho:geoip:update</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="magepsycho_geoip_update" xsi:type="object">MagePsycho\GeoIp\Console\Command\UpdateDatabase</item>
+            </argument>
+        </arguments>
+    </type>
+
+</config>

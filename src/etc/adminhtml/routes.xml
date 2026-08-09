@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * This file is part of the MagePsycho_GeoIp package.
+ *
+ * @author   Raj KB <magepsycho@gmail.com>
+ * @license  Open Software License (OSL 3.0)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="admin">
+        <route id="magepsycho_geoip" frontName="magepsycho_geoip">
+            <module name="MagePsycho_GeoIp"/>
+        </route>
+    </router>
+</config>

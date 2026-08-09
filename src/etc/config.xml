@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * This file is part of the MagePsycho_GeoIp package.
+ *
+ * @author   Raj KB <magepsycho@gmail.com>
+ * @license  Open Software License (OSL 3.0)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <magepsycho_geoip>
+            <general>
+                <enabled>1</enabled>
+                <forced_ip/>
+            </general>
+            <maxmind>
+                <account_id/>
+                <license_key/>
+                <cron_expr>0 3 * * 1</cron_expr>
+            </maxmind>
+        </magepsycho_geoip>
+    </default>
+</config>
