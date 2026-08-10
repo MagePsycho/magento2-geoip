@@ -20,7 +20,7 @@
 
 It has no storefront output and no admin grid of its own. What it provides is one injectable service, one value object, and the plumbing that keeps the `.mmdb` files on disk and up to date.
 
-Built to be consumed by other MagePsycho extensions — [SalesOrderGrid](https://github.com/MagePsycho/magento2-salesordergrid) (the order-grid IP popup), country-at-signup on customer registration, country-based cart rules in SalesPromotionPro — and by your own code just as well.
+Built to be consumed by other MagePsycho extensions — [SalesOrderGrid](https://github.com/MagePsycho/magento2-sales-order-grid) (the order-grid IP popup), country-at-signup on customer registration, country-based cart rules in SalesPromotionPro — and by your own code just as well.
 
 ## Key Features
 * One interface — `IpLookupInterface::lookup()` — returning a typed result object
